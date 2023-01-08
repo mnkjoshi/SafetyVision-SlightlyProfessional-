@@ -1,12 +1,25 @@
 import { useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import React from "react";
+import axios  from "axios";
 
 import mapStyles from "./mapStyles";
 const mapContainerStyle = {
   width: "800px",
   height: "600px",
 };
+
+function getDataVals() {
+  axios({
+    method: 'GET',
+    url: 'https://bit.ly/2mTM3nY',
+    responseType: 'stream'
+  })
+    .then(function (response) {
+      response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+    });
+}
+
 const SafeImage =
   "https://firebasestorage.googleapis.com/v0/b/safetyvision-huh.appspot.com/o/safe_icon.png?alt=media&token=df245587-62dd-48a1-8ce6-6a4889633ba7";
 const UnsafeImage =
